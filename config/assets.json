@@ -1,0 +1,67 @@
+[
+  {
+    "path": "docs/projects/project1/data/course.txt",
+    "bytes": 630,
+    "sha256": "17a6301bae6d30d530170660770c17bf1c3cb9847d1b5b65c61298da5c53a711"
+  },
+  {
+    "path": "docs/projects/project1/data/dept.txt",
+    "bytes": 161,
+    "sha256": "bc68684785be60329a1a11aaf4448c701dcde1b0dadaadc90e08585cc2250c12"
+  },
+  {
+    "path": "docs/projects/project1/data/enroll.txt",
+    "bytes": 4109,
+    "sha256": "cfa3b94cbba1cf9e86f1ca01551d6dc227d841fbbd901a152d9a51aaf1c134a6"
+  },
+  {
+    "path": "docs/projects/project1/data/major.txt",
+    "bytes": 2408,
+    "sha256": "342bfbacb560a9866c43852a42e4a8fa0ee6b76735456a432a6c2ac9a886ae6a"
+  },
+  {
+    "path": "docs/projects/project1/data/manifest.json",
+    "bytes": 1561,
+    "sha256": "bf55f67a52a611a0f28d73af1329282215f497947948395a170bf7f8902bb836"
+  },
+  {
+    "path": "docs/projects/project1/data/prof.txt",
+    "bytes": 355,
+    "sha256": "e0b891328c42126693376e3e248179f967442a9972935c9b5a362eaf13ebf786"
+  },
+  {
+    "path": "docs/projects/project1/data/section.txt",
+    "bytes": 539,
+    "sha256": "51afca96bcbf34a7a46aa498065b987afce2371d55117ecc8e5c71ae29bd1769"
+  },
+  {
+    "path": "docs/projects/project1/data/student.txt",
+    "bytes": 3401,
+    "sha256": "c0139a49d62beb1bd8dbf83157c8d882495a2a3f078107c13fb0f8822af17730"
+  },
+  {
+    "path": "docs/projects/project1/materials/Project_0_1.pdf",
+    "bytes": 1016705,
+    "sha256": "1c87d7e8aba50155ca62a5dd196a4cf380b755a8fb0c667fedcb3d0e08827921"
+  },
+  {
+    "path": "docs/projects/project1/materials/Project_0_1.pptx",
+    "bytes": 4596253,
+    "sha256": "3ce12a8574428f9f35140fd493632e81f756f9160194410b8bd56c4c87d79d52"
+  },
+  {
+    "path": "docs/projects/project1/materials/Report_Example1.doc",
+    "bytes": 49664,
+    "sha256": "4ffae615c8f816ac6c0df2d3d51fc07a2d0d29d3f969ddfb7c519dc005bfccc3"
+  },
+  {
+    "path": "docs/projects/project1/materials/Report_Example2.docx",
+    "bytes": 2707593,
+    "sha256": "b7938d157f181f35e6ff6b11f0bb295edbf8362f19a67c9a222457e3d629046b"
+  },
+  {
+    "path": "docs/projects/project1/materials/project1_data.zip",
+    "bytes": 4279,
+    "sha256": "8a006f3715c7324f342ec7cb48ee4dc912bc56bf54ec22f011e5ab03b8fe1090"
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "timezone": "Asia/Shanghai",
+  "semester": "2026 秋季",
+  "projects": [
+    {
+      "id": 1,
+      "title": "Access 数据库入门",
+      "summary": "建库、导入数据与 SQL 插入",
+      "environment": "Microsoft Access",
+      "release_at": "2026-10-05T00:00:00+08:00",
+      "deadline": "2026-10-19T00:00:00+08:00"
+    },
+    {
+      "id": 2,
+      "title": "SQL 查询与索引",
+      "summary": "多表查询、分组统计与索引实验",
+      "environment": "Microsoft Access",
+      "release_at": null,
+      "deadline": null
+    },
+    {
+      "id": 3,
+      "title": "Java 连接数据库",
+      "summary": "使用 JDBC 操作 Access 数据库",
+      "environment": "JDK 17 · Maven · UCanAccess",
+      "release_at": null,
+      "deadline": null
+    },
+    {
+      "id": 4,
+      "title": "数据库设计与应用",
+      "summary": "E-R 建模、关系设计与 Access 应用",
+      "environment": "Microsoft Access",
+      "release_at": null,
+      "deadline": null
+    },
+    {
+      "id": 5,
+      "title": "数据库完整性约束",
+      "summary": "域、实体与参照完整性验证",
+      "environment": "Microsoft Access",
+      "release_at": null,
+      "deadline": null
+    },
+    {
+      "id": 6,
+      "title": "综合数据库系统",
+      "summary": "团队完成前端、后端与数据库",
+      "environment": "3–4 人团队项目",
+      "release_at": null,
+      "deadline": null
+    }
+  ]
+}
