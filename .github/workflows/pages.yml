@@ -1,0 +1,44 @@
+name: Release course pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # UTC 16:00 = next day 00:00 in Asia/Shanghai.
+    - cron: '0 16 * * *'
+    # Retry near the two confirmed Project 1 boundaries if GitHub is busy.
+    - cron: '17,37 16 4,18 10 *'
+permissions:
+  contents: read
+concurrency:
+  group: course-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v6
+      - name: Test release boundaries and asset integrity
+        run: python3 -m unittest discover -s tests -v
+      - name: Build only materials already released by server time
+        run: python3 scripts/build_site.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy released content
+        id: deployment
+        uses: actions/deploy-pages@v4
