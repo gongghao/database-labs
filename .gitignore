@@ -2,3 +2,10 @@
 __pycache__/
 *.pyc
 .local/
+_site/
+
+# Unreleased teaching sources stay local until a release date is approved.
+content/projects/
+content/manifest.json
+content/project[2-6].html
+DEPLOYMENT.md
