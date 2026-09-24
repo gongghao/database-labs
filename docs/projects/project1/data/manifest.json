@@ -1,0 +1,82 @@
+[
+  {
+    "file": "course.txt",
+    "rows": 13,
+    "columns": [
+      "cno",
+      "cname",
+      "dname"
+    ],
+    "bytes": 630,
+    "sha256": "17a6301bae6d30d530170660770c17bf1c3cb9847d1b5b65c61298da5c53a711"
+  },
+  {
+    "file": "dept.txt",
+    "rows": 6,
+    "columns": [
+      "dname",
+      "numphds"
+    ],
+    "bytes": 161,
+    "sha256": "bc68684785be60329a1a11aaf4448c701dcde1b0dadaadc90e08585cc2250c12"
+  },
+  {
+    "file": "enroll.txt",
+    "rows": 121,
+    "columns": [
+      "sid",
+      "grade",
+      "dname",
+      "cno",
+      "sectno"
+    ],
+    "bytes": 4109,
+    "sha256": "cfa3b94cbba1cf9e86f1ca01551d6dc227d841fbbd901a152d9a51aaf1c134a6"
+  },
+  {
+    "file": "major.txt",
+    "rows": 104,
+    "columns": [
+      "dname",
+      "sid"
+    ],
+    "bytes": 2408,
+    "sha256": "342bfbacb560a9866c43852a42e4a8fa0ee6b76735456a432a6c2ac9a886ae6a"
+  },
+  {
+    "file": "prof.txt",
+    "rows": 10,
+    "columns": [
+      "pname",
+      "dname"
+    ],
+    "bytes": 355,
+    "sha256": "e0b891328c42126693376e3e248179f967442a9972935c9b5a362eaf13ebf786"
+  },
+  {
+    "file": "section.txt",
+    "rows": 13,
+    "columns": [
+      "dname",
+      "cno",
+      "sectno",
+      "pname"
+    ],
+    "bytes": 539,
+    "sha256": "51afca96bcbf34a7a46aa498065b987afce2371d55117ecc8e5c71ae29bd1769"
+  },
+  {
+    "file": "student.txt",
+    "rows": 104,
+    "columns": [
+      "sid",
+      "sname",
+      "sex",
+      "age",
+      "year",
+      "gpa"
+    ],
+    "bytes": 3401,
+    "sha256": "c0139a49d62beb1bd8dbf83157c8d882495a2a3f078107c13fb0f8822af17730"
+  }
+]
