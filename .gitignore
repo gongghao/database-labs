@@ -4,8 +4,7 @@ __pycache__/
 .local/
 _site/
 
-# Unreleased teaching sources stay local until a release date is approved.
-content/projects/
+# Project 1 originals already exist in docs/.
+content/projects/project1/
 content/manifest.json
-content/project[2-6].html
 DEPLOYMENT.md
