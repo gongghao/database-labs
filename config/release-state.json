@@ -1,4 +1,6 @@
 {
-  "eligible_projects": [],
+  "eligible_projects": [
+    1
+  ],
   "passed_deadlines": []
 }
