@@ -63,5 +63,100 @@
     "path": "docs/projects/project1/materials/project1_data.zip",
     "bytes": 4279,
     "sha256": "8a006f3715c7324f342ec7cb48ee4dc912bc56bf54ec22f011e5ab03b8fe1090"
+  },
+  {
+    "path": "content/projects/project2/materials/Project_2.pdf",
+    "bytes": 488315,
+    "sha256": "cfeedb5960d62714be7db4390029805268aaad6e4401a6a0ce33058d26ddc40d"
+  },
+  {
+    "path": "content/projects/project2/materials/Project_2_release.pptx",
+    "bytes": 150571,
+    "sha256": "6705dc79ea326c416f63d2ebfd4b74ee7591faff2937501cca46a9f7793be2f0"
+  },
+  {
+    "path": "content/projects/project2/materials/groupby.xlsx",
+    "bytes": 10242,
+    "sha256": "c3d46737c6bc2bfb095359c909411a7079dc838604a459928a33d276450f002a"
+  },
+  {
+    "path": "content/projects/project2/materials/project1_data.zip",
+    "bytes": 4279,
+    "sha256": "8a006f3715c7324f342ec7cb48ee4dc912bc56bf54ec22f011e5ab03b8fe1090"
+  },
+  {
+    "path": "content/projects/project2/materials/project2_testdata.zip",
+    "bytes": 776,
+    "sha256": "62760bfe11ed305985b01fc743c67acddeda571e036d6d95838b8e5c41949ed7"
+  },
+  {
+    "path": "content/projects/project3/materials/Main.java",
+    "bytes": 1942,
+    "sha256": "7cdbae26b73771251550031ecc7a9054180699abf550b273137438c8094e8274"
+  },
+  {
+    "path": "content/projects/project3/materials/Project_3.pdf",
+    "bytes": 1321030,
+    "sha256": "fbe233271b48ae03916ddfc9e67526957d292ef229b4bc3aa384503913424a5c"
+  },
+  {
+    "path": "content/projects/project3/materials/Project_3.pptx",
+    "bytes": 1384522,
+    "sha256": "9487a24ed44fe8c1d648b61c2b1a4e1633362a2ea208f8d2fd49d5cff4895236"
+  },
+  {
+    "path": "content/projects/project3/materials/pom.xml",
+    "bytes": 1942,
+    "sha256": "0c1729705c53ab53a16316039dc173f2f798d120884d85ab581fd40642a63d44"
+  },
+  {
+    "path": "content/projects/project3/materials/project1_data.zip",
+    "bytes": 4279,
+    "sha256": "8a006f3715c7324f342ec7cb48ee4dc912bc56bf54ec22f011e5ab03b8fe1090"
+  },
+  {
+    "path": "content/projects/project3/materials/project2_testdata.zip",
+    "bytes": 884,
+    "sha256": "78536e9d76a8992d0410ee857dde2c30de5a1565a0f7ef9d29e13b48c2f8c38a"
+  },
+  {
+    "path": "content/projects/project4/materials/Project_4.pptx",
+    "bytes": 1822703,
+    "sha256": "a0111be1d4a9386d1746191ecd6ed0e9dade57b3a1e9564b9854c2fe51ec9861"
+  },
+  {
+    "path": "content/projects/project4/materials/project1_data.zip",
+    "bytes": 4279,
+    "sha256": "8a006f3715c7324f342ec7cb48ee4dc912bc56bf54ec22f011e5ab03b8fe1090"
+  },
+  {
+    "path": "content/projects/project4/materials/report_example.docx",
+    "bytes": 350997,
+    "sha256": "20208425ba3fc6e89d4b28c60c72b9463b50164658a8623d6470f0e393eec0fa"
+  },
+  {
+    "path": "content/projects/project5/materials/Project_5.pdf",
+    "bytes": 1991453,
+    "sha256": "3dad6c64d63c77c29449d0d55cfe2d13a403f18a5dda4342d2bc30c9b39fba78"
+  },
+  {
+    "path": "content/projects/project5/materials/project5_data.zip",
+    "bytes": 4279,
+    "sha256": "8a006f3715c7324f342ec7cb48ee4dc912bc56bf54ec22f011e5ab03b8fe1090"
+  },
+  {
+    "path": "content/projects/project5/materials/project_5.pptx",
+    "bytes": 1968433,
+    "sha256": "1effdd56e05cc1346ed8344fc479e1b38222a846a54f213a972759e46d2a3ed5"
+  },
+  {
+    "path": "content/projects/project6/materials/project_6.pdf",
+    "bytes": 2338283,
+    "sha256": "3a25b1933865c5bcd35cd079910285afdcd655a4da4952c0462a1d00ced37326"
+  },
+  {
+    "path": "content/projects/project6/materials/project_6.pptx",
+    "bytes": 7236559,
+    "sha256": "37d04ca46c9efb9ef7a5bf3863a4b9aba6110755b8fc5009233fe2747bcbb569"
   }
 ]
