@@ -47,9 +47,31 @@ class ReleaseTests(unittest.TestCase):
         dest=self.output('2026-10-19T00:00:00+08:00')
         self.assertIn('提交已截止',(dest/'index.html').read_text())
         self.assertTrue((dest/'projects/project1/data/student.txt').is_file())
-    def test_undated_projects_remain_locked_in_future(self):
-        dest=self.output('2030-01-01T00:00:00+08:00')
-        for n in range(2,7):self.assertEqual(len(list((dest/f'projects/project{n}').iterdir())),1)
+    def test_undated_project_remains_locked_in_future(self):
+        import json
+        from unittest.mock import patch
+        config=json.loads((ROOT/'config/course.json').read_text())
+        config['projects'][-1]['release_at']=None
+        with patch.object(builder.json,'loads',return_value=config):
+            dest=self.output('2030-01-01T00:00:00+08:00')
+        self.assertEqual(len(list((dest/'projects/project6').iterdir())),1)
+    def test_every_release_boundary_and_deadline_order(self):
+        import json
+        from datetime import timedelta
+        config=json.loads((ROOT/'config/course.json').read_text())
+        self.assertEqual(config['projects'][3]['deadline'],'2026-11-30T00:00:00+08:00')
+        self.assertEqual(config['projects'][4]['release_at'],'2026-11-30T00:00:00+08:00')
+        self.assertIsNone(config['projects'][5]['deadline'])
+        for p in config['projects']:
+            release=builder.parse_time(p['release_at'])
+            before=self.output((release-timedelta(seconds=1)).isoformat())
+            after=self.output(release.isoformat())
+            path=f"projects/project{p['id']}"
+            self.assertFalse((before/path/'materials').exists())
+            self.assertTrue((after/path/'materials').is_dir())
+            self.assert_links(after)
+            if p['deadline']:
+                self.assertGreater(builder.parse_time(p['deadline']),release)
     @unittest.skipUnless((ROOT/'content/project2.html').exists(), 'Unreleased project sources are local only')
     def test_all_future_project_downloads_resolve(self):
         import json
