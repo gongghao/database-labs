@@ -1,6 +1,6 @@
-import importlib.util, tempfile, unittest
+import importlib.util, tempfile, unittest, json
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 ROOT=Path(__file__).resolve().parents[1]
@@ -27,7 +27,8 @@ class ReleaseTests(unittest.TestCase):
                 self.assertTrue(target.is_relative_to(dest))
                 if u.fragment:self.assertIn(u.fragment,Links(target.read_text()).ids)
     def test_before_release_excludes_all_materials_and_question_bodies(self):
-        dest=self.output('2026-10-04T23:59:59+08:00')
+        release=builder.parse_time(json.loads((ROOT/'config/course.json').read_text())['projects'][0]['release_at'])
+        dest=self.output((release-timedelta(seconds=1)).isoformat())
         self.assertEqual(list(dest.rglob('*.zip')),[])
         self.assertEqual(list(dest.rglob('*.pptx')),[])
         self.assertEqual(list(dest.rglob('*.txt')),[])
@@ -38,7 +39,8 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual(len(list((dest/f'projects/project{n}').iterdir())),1)
         self.assert_links(dest)
     def test_opens_at_exact_beijing_boundary(self):
-        dest=self.output('2026-10-04T16:00:00+00:00')
+        release=builder.parse_time(json.loads((ROOT/'config/course.json').read_text())['projects'][0]['release_at'])
+        dest=self.output(release.astimezone(timezone.utc).isoformat())
         self.assertTrue((dest/'projects/project1/materials/project1_data.zip').is_file())
         self.assertIn('INSERT INTO',(dest/'projects/project1/index.html').read_text())
         for n in range(2,7):self.assertFalse((dest/f'projects/project{n}/materials').exists())
