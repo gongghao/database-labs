@@ -6,8 +6,8 @@ on:
   schedule:
     # UTC 16:00 = next day 00:00 in Asia/Shanghai.
     - cron: '0 16 * * *'
-    # Retry near the two confirmed Project 1 boundaries if GitHub is busy.
-    - cron: '17,37 16 4,18 10 *'
+    # Retry after midnight if the first scheduled run is delayed or dropped.
+    - cron: '17,37 16 * * *'
 permissions:
   contents: read
 concurrency:
@@ -42,3 +42,32 @@ jobs:
       - name: Deploy released content
         id: deployment
         uses: actions/deploy-pages@v4
+  record-release:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - name: Record changed release eligibility
+        run: |
+          python3 - <<'PYCODE'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+          config=json.loads(Path('config/course.json').read_text())
+          now=datetime.now(timezone.utc)
+          due=lambda value: value is not None and now >= datetime.fromisoformat(value)
+          state={'eligible_projects':[p['id'] for p in config['projects'] if due(p['release_at'])],
+                 'passed_deadlines':[p['id'] for p in config['projects'] if due(p['deadline'])]}
+          Path('config/release-state.json').write_text(json.dumps(state,indent=2)+'\n')
+          PYCODE
+          git add config/release-state.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Record course release eligibility"
+            git push origin HEAD:main
+          fi
