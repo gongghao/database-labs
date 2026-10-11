@@ -87,6 +87,41 @@ class ReleaseTests(unittest.TestCase):
     def test_timezone_required(self):
         with self.assertRaises(ValueError):builder.parse_time('2026-10-05T00:00:00')
         with self.assertRaises(ValueError):builder.is_released({'release_at':'2026-10-05T00:00:00+08:00'},datetime(2026,10,5))
+    def test_quiz_1_remains_available_before_and_after_project_dates(self):
+        original=(ROOT/'content/quizzes/quiz1/quiz1.jpeg').read_bytes()
+        for when in ('2026-09-01T00:00:00+08:00','2030-01-01T00:00:00+08:00'):
+            dest=self.output(when)
+            self.assertEqual((dest/'quizzes/quiz1/questions/quiz1.jpeg').read_bytes(),original)
+            self.assertIn('长期有效',(dest/'quizzes/quiz1/index.html').read_text())
+            self.assert_links(dest)
+    def test_four_quizzes_and_pending_answers(self):
+        dest=self.output('2026-10-11T00:00:00+08:00')
+        self.assertEqual(len(list((dest/'quizzes').glob('quiz*/index.html'))),4)
+        for n in range(1,5):
+            directory=dest/f'quizzes/quiz{n}'
+            text=(directory/'index.html').read_text()
+            self.assertIn('答案待上传',text)
+            self.assertFalse((directory/'answers').exists())
+            if n>1:
+                self.assertIn('题目待上传',text)
+                self.assertFalse((directory/'questions').exists())
+    def test_answers_publish_only_when_explicitly_configured(self):
+        from unittest.mock import patch
+        import shutil
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t); materials=root/'content/quizzes/quiz1'; materials.mkdir(parents=True)
+            shutil.copy2(ROOT/'content/quizzes/quiz1/quiz1.jpeg',materials/'quiz1.jpeg')
+            (materials/'answer.txt').write_text('Test answer attachment')
+            quizzes=json.loads((ROOT/'config/course.json').read_text())['quizzes']
+            before=root/'before';before.mkdir()
+            after=root/'after';after.mkdir()
+            with patch.object(builder,'ROOT',root):
+                builder.build_quizzes(before,[],quizzes)
+                self.assertFalse((before/'quizzes/quiz1/answers').exists())
+                quizzes[0]['answer_file']='content/quizzes/quiz1/answer.txt'
+                builder.build_quizzes(after,[],quizzes)
+            self.assertEqual((after/'quizzes/quiz1/answers/answer.txt').read_text(),'Test answer attachment')
+            self.assertIn('下载答案',(after/'quizzes/quiz1/index.html').read_text())
     def test_source_assets_are_intact(self):
         import json,hashlib
         for item in json.loads((ROOT/'config/assets.json').read_text()):
