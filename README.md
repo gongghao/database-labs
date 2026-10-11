@@ -60,3 +60,11 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory _site
 成功部署后，工作流仅在项目开放或截止状态变化时更新 `config/release-state.json`；这既记录课程状态，也保持学期内仓库活动，避免公开仓库连续 60 天无活动导致 GitHub 停用定时工作流。此文件不参与开放判定，实际判定始终依据课程配置和服务器时间。
 
 Project 3 使用官方 JDK / Maven 下载链接，原始大型安装程序留在本地。Project 4、6 需自行设计业务测试数据。
+
+## Quiz 模块
+
+入口：https://gongghao.github.io/database-labs/quizzes/index.html
+
+共 4 个 Quiz，独立于 Project 的开放/截止日期，题目发布后长期有效。Quiz 1 使用提供的原始 JPEG 展示 Q1–Q13，Quiz 2–4 等待题目；答案暂未上传，不生成虚构的下载链接。
+
+`config/course.json` 的 `quizzes` 数组控制标题、说明、`question_file` 和 `answer_file`。文件路径相对仓库根目录，必须位于 `content/quizzes/` 下。后续上传题目或答案后，再将相应字段从 `null` 改为该文件路径；构建只复制明确配置的附件，不会自动发布目录中未选用的答案。图片题目会直接显示，PDF 等文档提供查看与下载入口。无需设置发布日期或截止时间。
