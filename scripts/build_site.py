@@ -1,7 +1,7 @@
 """Build only released course content for the GitHub Pages artifact."""
 from pathlib import Path
 from datetime import datetime, timezone
-import html, json, shutil
+import hashlib, html, json, shutil
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -53,7 +53,7 @@ def quiz_attachment(value, destination):
         raise ValueError('Quiz files must be inside content/quizzes')
     destination.mkdir(parents=True,exist_ok=True)
     shutil.copy2(source,destination/source.name)
-    return quote(source.name)
+    return quote(source.name)+'?v='+hashlib.sha256(source.read_bytes()).hexdigest()[:12]
 
 def build_quizzes(output, projects, quizzes):
     # Quizzes deliberately have no date gate or expiry.
