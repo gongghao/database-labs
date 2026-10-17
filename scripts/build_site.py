@@ -41,7 +41,7 @@ def download_section(n, assets):
     for p in sorted(assets.iterdir()):
         if not p.is_file(): continue
         size=f'{p.stat().st_size/1024/1024:.1f} MB' if p.stat().st_size>=1048576 else f'{p.stat().st_size/1024:.1f} KB'
-        links.append(f'<a class="download-card" href="materials/{quote(p.name)}" download><span class="file-icon">{p.suffix[1:].upper()}</span><div><h3>{html.escape(p.name)}</h3><p>{size} · 下载</p></div><span aria-hidden="true">↓</span></a>')
+        links.append(f'<a class="download-card" href="materials/{quote(p.name)}?v={hashlib.sha256(p.read_bytes()).hexdigest()[:12]}" download><span class="file-icon">{p.suffix[1:].upper()}</span><div><h3>{html.escape(p.name)}</h3><p>{size} · 下载</p></div><span aria-hidden="true">↓</span></a>')
     return '<section class="section" id="resources"><div class="eyebrow">COURSE MATERIALS</div><h2>资料下载</h2><p>课件与示例保留原始内容，其中历史日期与邮箱不适用于本学期。</p><div class="download-grid">'+''.join(links)+'</div></section>'
 
 def quiz_attachment(value, destination):

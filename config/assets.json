@@ -66,13 +66,13 @@
   },
   {
     "path": "content/projects/project2/materials/Project_2.pdf",
-    "bytes": 488315,
-    "sha256": "cfeedb5960d62714be7db4390029805268aaad6e4401a6a0ce33058d26ddc40d"
+    "bytes": 286170,
+    "sha256": "5ec546ea8fe162ec5db726443ac1f10af66793a2407df18bf62a769d3f26e25d"
   },
   {
     "path": "content/projects/project2/materials/Project_2_release.pptx",
-    "bytes": 150571,
-    "sha256": "6705dc79ea326c416f63d2ebfd4b74ee7591faff2937501cca46a9f7793be2f0"
+    "bytes": 117249,
+    "sha256": "8556d393ff3ba6aee467099423fbdcab70c30f99e82a869515bb291e19b7ee83"
   },
   {
     "path": "content/projects/project2/materials/groupby.xlsx",
