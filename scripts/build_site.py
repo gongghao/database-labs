@@ -147,6 +147,12 @@ def build(output=None, now=None):
     body=body.replace('<section class="section">', f'<div class="notice"><span class="notice-label">作业提交 / 答疑</span><p>{EMAIL_LINK}<br><a href="course.html">课程信息、考核与大纲 →</a></p></div><section class="section">',1)
     quiz_banner='<div class="prep-banner quiz-banner"><div><span class="eyebrow">QUIZ · 4 份练习</span><h2>Quiz 练习</h2><p>已发布题目长期有效，可随时练习与复习。</p></div><a class="button primary" href="quizzes/index.html">进入 Quiz ↗</a></div>'
     body=body.replace('<div class="notice">',quiz_banner+'<div class="notice">',1)
+    practice=ROOT/'content/classroom/SQL_Query_Practice_Data.zip'
+    (output/'materials').mkdir(exist_ok=True)
+    shutil.copy2(practice,output/'materials'/practice.name)
+    practice_url=f'materials/{practice.name}?v={hashlib.sha256(practice.read_bytes()).hexdigest()[:12]}'
+    practice_banner=f'<section class="prep-banner quiz-banner" id="classroom-data"><div><span class="eyebrow">CLASSROOM PRACTICE</span><h2>上课查询练习数据</h2><p>Sailors、Boats、Reserves 三张表的 TXT 数据，用于课堂 SQL 查询练习。解压 ZIP 后即可导入。</p></div><a class="button primary" href="{practice_url}" download>下载练习数据 ZIP ↓</a></section>'
+    body=body.replace(quiz_banner,practice_banner+quiz_banner,1)
     (output/'index.html').write_text(page('实验安排',body,projects))
     (output/'preparation.html').write_text(page('实验准备',(ROOT/'content/preparation.html').read_text(),projects,'preparation'))
     (output/'materials').mkdir(exist_ok=True)

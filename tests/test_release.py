@@ -29,7 +29,11 @@ class ReleaseTests(unittest.TestCase):
     def test_before_release_excludes_all_materials_and_question_bodies(self):
         release=builder.parse_time(json.loads((ROOT/'config/course.json').read_text())['projects'][0]['release_at'])
         dest=self.output((release-timedelta(seconds=1)).isoformat())
-        self.assertEqual(list(dest.rglob('*.zip')),[])
+        # Classroom practice data is public independently of project release dates.
+        practice=dest/'materials/SQL_Query_Practice_Data.zip'
+        self.assertEqual(list(dest.rglob('*.zip')),[practice])
+        self.assertEqual(practice.read_bytes(),(ROOT/'content/classroom/SQL_Query_Practice_Data.zip').read_bytes())
+        self.assertIn('上课查询练习数据',(dest/'index.html').read_text())
         self.assertEqual(list(dest.rglob('*.pptx')),[])
         self.assertEqual(list(dest.rglob('*.txt')),[])
         self.assertFalse((dest/'content').exists())

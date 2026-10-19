@@ -158,5 +158,10 @@
     "path": "content/projects/project6/materials/project_6.pptx",
     "bytes": 7236559,
     "sha256": "37d04ca46c9efb9ef7a5bf3863a4b9aba6110755b8fc5009233fe2747bcbb569"
+  },
+  {
+    "path": "content/classroom/SQL_Query_Practice_Data.zip",
+    "bytes": 776,
+    "sha256": "82973b1e5d93c929dd670d2bd0a31fb89d22c3a624e38a19a6900c21dd9040e7"
   }
 ]
