@@ -104,8 +104,12 @@ class ReleaseTests(unittest.TestCase):
         for n in range(1,5):
             directory=dest/f'quizzes/quiz{n}'
             text=(directory/'index.html').read_text()
-            self.assertIn('答案待上传',text)
-            self.assertFalse((directory/'answers').exists())
+            if n==1:
+                self.assertIn('在线查看答案',text)
+                self.assertEqual((directory/'answers/Quiz1-Answers-2026.pdf').read_bytes(),(ROOT/'content/quizzes/quiz1/Quiz1-Answers-2026.pdf').read_bytes())
+            else:
+                self.assertIn('答案待上传',text)
+                self.assertFalse((directory/'answers').exists())
             if n>2:
                 self.assertIn('题目待上传',text)
                 self.assertFalse((directory/'questions').exists())
@@ -117,6 +121,7 @@ class ReleaseTests(unittest.TestCase):
             shutil.copy2(ROOT/'content/quizzes/quiz1/quiz1.jpeg',materials/'quiz1.jpeg')
             (materials/'answer.txt').write_text('Test answer attachment')
             quizzes=json.loads((ROOT/'config/course.json').read_text())['quizzes']
+            quizzes[0]['answer_file']=None
             for quiz in quizzes[1:]:
                 quiz['question_file']=None
                 quiz['answer_file']=None

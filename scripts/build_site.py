@@ -90,7 +90,10 @@ def build_quizzes(output, projects, quizzes):
         questions+='</section>'
         answers='<section class="section" id="answers"><div class="section-heading"><div><div class="eyebrow">ANSWERS</div><h2>答案</h2></div></div>'
         if answer:
-            answers+=f'<a class="button primary" href="answers/{answer}" download>下载答案 ↓</a>'
+            if Path(q['answer_file']).suffix.lower()=='.pdf':
+                answers+=f'<div class="actions"><a class="button primary" href="answers/{answer}" target="_blank" rel="noopener">在线查看答案 ↗</a><a class="button secondary" href="answers/{answer}" download>下载答案 ↓</a></div>'
+            else:
+                answers+=f'<a class="button primary" href="answers/{answer}" download>下载答案 ↓</a>'
         else:
             answers+='<div class="quiz-placeholder"><h3>答案待上传</h3><p>答案稍后补充，可先完成练习。</p></div>'
         answers+='</section>'
