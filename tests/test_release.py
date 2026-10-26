@@ -106,7 +106,7 @@ class ReleaseTests(unittest.TestCase):
             text=(directory/'index.html').read_text()
             self.assertIn('答案待上传',text)
             self.assertFalse((directory/'answers').exists())
-            if n>1:
+            if n>2:
                 self.assertIn('题目待上传',text)
                 self.assertFalse((directory/'questions').exists())
     def test_answers_publish_only_when_explicitly_configured(self):
@@ -117,6 +117,9 @@ class ReleaseTests(unittest.TestCase):
             shutil.copy2(ROOT/'content/quizzes/quiz1/quiz1.jpeg',materials/'quiz1.jpeg')
             (materials/'answer.txt').write_text('Test answer attachment')
             quizzes=json.loads((ROOT/'config/course.json').read_text())['quizzes']
+            for quiz in quizzes[1:]:
+                quiz['question_file']=None
+                quiz['answer_file']=None
             before=root/'before';before.mkdir()
             after=root/'after';after.mkdir()
             with patch.object(builder,'ROOT',root):

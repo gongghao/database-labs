@@ -61,9 +61,9 @@
     },
     {
       "id": 2,
-      "title": "Quiz 2",
-      "summary": "题目待上传",
-      "question_file": null,
+      "title": "SQL 查询练习",
+      "summary": "条件查询、连接与子查询 · Q1–Q7",
+      "question_file": "content/quizzes/quiz2/Quiz2-Questions.pdf",
       "answer_file": null
     },
     {
