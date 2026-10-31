@@ -23,7 +23,7 @@
       "title": "Java 连接数据库",
       "summary": "使用 JDBC 操作 Access 数据库",
       "environment": "JDK 17 · Maven · UCanAccess",
-      "release_at": "2026-11-02T00:00:00+08:00",
+      "release_at": "2026-10-31T00:00:00+08:00",
       "deadline": "2026-11-16T00:00:00+08:00"
     },
     {
