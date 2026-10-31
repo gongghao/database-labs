@@ -96,13 +96,13 @@
   },
   {
     "path": "content/projects/project3/materials/Project_3.pdf",
-    "bytes": 1321030,
-    "sha256": "fbe233271b48ae03916ddfc9e67526957d292ef229b4bc3aa384503913424a5c"
+    "bytes": 1565698,
+    "sha256": "5fd7eba57fe20119a014c092d541a443b7108dfafe684f45a2d56b7e7998e428"
   },
   {
     "path": "content/projects/project3/materials/Project_3.pptx",
-    "bytes": 1384522,
-    "sha256": "9487a24ed44fe8c1d648b61c2b1a4e1633362a2ea208f8d2fd49d5cff4895236"
+    "bytes": 1286540,
+    "sha256": "1b24d4718b94266c7932242d52209f945a1567014d770c350664e8809b2913ea"
   },
   {
     "path": "content/projects/project3/materials/pom.xml",
